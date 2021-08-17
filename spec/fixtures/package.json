@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "lodash": "^4.17.21",
-    "yarn": "^1.22.11"
+    "lodash": "^4.17.21"
   }
 }

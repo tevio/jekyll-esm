@@ -42,7 +42,7 @@ RSpec.describe Jekyll::Esm do
   let(:bad_js_dest_on) { "#{SPEC_FIXTURES_DIR}/_site/src/controllers/hello_controller.syntax.js" }
 
   describe "building the site" do
-    context 'when esm succeeds' do
+    context 'when esm finds a module' do
       before do
         if File.exists?(bad_js_src_on)
           File.delete(bad_js_src_on)

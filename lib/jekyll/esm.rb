@@ -9,6 +9,9 @@ require 'json'
 
 module Jekyll
   module Esm
+    @@existing_esm_packages = []
+    @@new_esm_packages = []
+
     class Error < StandardError; end
 
     def self.process(page)
@@ -20,6 +23,12 @@ module Jekyll
         importmap = JSON.parse(value.children[0].content)
         imports = importmap["imports"]
         imports.keys.each do |import|
+          pkg_path = File.join(page.site.source, 'node_modules', import)
+
+          # don't repeatedly attempt to install a package
+          return if Dir.exists?(pkg_path) && @@new_esm_packages.include?(import)
+
+          @@new_esm_packages << import
 
           stdout, stderr, status = Open3.capture3(
             "yarn add #{import}",
@@ -34,15 +43,30 @@ module Jekyll
           end
         end
       end
-
     end
 
     def self.apply(site)
+      existing_packages = Dir.children(File.join(site.source, 'node_modules')).reject { |dir| dir =~ /^\..*$/ }
+      for_removal = existing_packages - @@new_esm_packages.uniq
+
+      # Remove any packages that are no longer referenced in an esm declaration
+      if for_removal.any?
+        stdout, stderr, status = Open3.capture3(
+          "yarn remove #{for_removal.join(' ')}",
+          chdir: File.expand_path(site.source)
+        )
+
+        if site.config.dig('esm', 'strict')
+          runtime_error = stdout =~ /ERROR in|SyntaxError/
+
+          raise Error, stderr if stderr.size > 0
+          raise Error, stdout if !runtime_error.nil?
+        end
+      end
+
       FileUtils.cp_r(File.join(site.source, 'node_modules'), File.join(site.dest, 'node_modules'))
+      @@new_esm_packages = []
     end
-
-    private
-
   end
 end
 
