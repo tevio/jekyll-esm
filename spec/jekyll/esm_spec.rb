@@ -60,7 +60,9 @@ RSpec.describe Jekyll::Esm do
 
       it "writes the output" do
         site.write
-        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/lodash")).to be(true)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/stimulus")).to be(true)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks")).to be(true)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks-animate")).to be(true)
       end
     end
   end

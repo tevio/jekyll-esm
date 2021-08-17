@@ -22,7 +22,8 @@ module Jekyll
       import_maps.each do |value|
         importmap = JSON.parse(value.children[0].content)
         imports = importmap["imports"]
-        imports.keys.each do |import|
+        imports.keys.each do |import_key|
+          import = import_key.split('/').first
           pkg_path = File.join(page.site.source, 'node_modules', import)
 
           # don't repeatedly attempt to install a package

@@ -1,11 +1,3 @@
 collections:
   docs:
     output: true
-
-webpack:
-  only_in:
-    - _site
-    - _build
-  cleanup_files:
-    - src
-    - node_modules

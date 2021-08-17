@@ -1,4 +1,4 @@
-const logMessage = "ES6, Stimulus & Turbolinks with Jekyll on Webpack";
+const logMessage = "ES6, Stimulus & Turbolinks with Jekyll on Esm";
 console.log(logMessage)
 
 import { Application } from "stimulus"
