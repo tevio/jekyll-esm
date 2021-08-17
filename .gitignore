@@ -1,0 +1,18 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+/spec/fixtures/.jekyll-cache/
+/spec/fixtures/_site/
+/spec/fixtures/dist/
+/spec/fixtures/node_modules/
+/*.gem
+
+# rspec failure tracking
+.rspec_status
+tags
+node_modules
