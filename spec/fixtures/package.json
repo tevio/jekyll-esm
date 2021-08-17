@@ -1,7 +1,10 @@
 {
   "dependencies": {
-    "stimulus": "^2.0.0",
-    "turbolinks": "^5.2.0",
-    "turbolinks-animate": "^3.2.1"
-  }
+    "stimulus": "^2.0.0"
+  },
+  "name": "jekyll-esm-fixtures",
+  "version": "1.0.0",
+  "description": "testing",
+  "main": "index.js",
+  "license": "MIT"
 }

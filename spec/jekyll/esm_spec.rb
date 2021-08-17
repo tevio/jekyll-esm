@@ -35,23 +35,10 @@ RSpec.describe Jekyll::Esm do
     expect(Jekyll::Esm::VERSION).not_to be nil
   end
 
-  let(:bad_js_src_off) { "#{SPEC_FIXTURES_DIR}/src/controllers/hello_controller.syntax.js.off" }
-  let(:bad_js_src_on) { "#{SPEC_FIXTURES_DIR}/src/controllers/hello_controller.syntax.js" }
-
-  let(:bad_js_dest_off) { "#{SPEC_FIXTURES_DIR}/_site/src/controllers/hello_controller.syntax.js.off" }
-  let(:bad_js_dest_on) { "#{SPEC_FIXTURES_DIR}/_site/src/controllers/hello_controller.syntax.js" }
-
   describe "building the site" do
     context 'when esm finds a module' do
       before do
-        if File.exists?(bad_js_src_on)
-          File.delete(bad_js_src_on)
-        end
-
-        if File.exists?(bad_js_dest_on)
-          File.delete(bad_js_dest_on)
-        end
-
+        FileUtils.rm_rf("#{SPEC_FIXTURES_DIR}/node_modules")
         site.reset
         site.read
         (site.pages | posts | site.docs_to_write).each { |p| p.content.strip! }
@@ -60,9 +47,30 @@ RSpec.describe Jekyll::Esm do
 
       it "writes the output" do
         site.write
+
+        p "first run written"
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/stimulus")).to be(true)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks")).to be(true)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks-animate")).to be(true)
+
+        FileUtils.mv("#{SPEC_FIXTURES_DIR}/_layouts/default.html", "#{SPEC_FIXTURES_DIR}/_layouts/default.html.tmp_off")
+        FileUtils.mv("#{SPEC_FIXTURES_DIR}/_layouts/default.html.off", "#{SPEC_FIXTURES_DIR}/_layouts/default.html")
+
+        site.reset
+        site.read
+        (site.pages | posts | site.docs_to_write).each { |p| p.content.strip! }
+        site.render
+        site.write
+
+        p "Second run written"
+        FileUtils.mv("#{SPEC_FIXTURES_DIR}/_layouts/default.html", "#{SPEC_FIXTURES_DIR}/_layouts/default.html.off")
+        FileUtils.mv("#{SPEC_FIXTURES_DIR}/_layouts/default.html.tmp_off", "#{SPEC_FIXTURES_DIR}/_layouts/default.html")
+
+
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/stimulus")).to be(true)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks")).to be(false)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks-animate")).to be(false)
+        FileUtils.rm_rf("#{SPEC_FIXTURES_DIR}/node_modules")
       end
     end
   end

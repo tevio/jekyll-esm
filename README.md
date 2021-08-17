@@ -41,9 +41,17 @@ plugins:
   - jekyll/esm
 ```
 
-### Example `_config.yml`
-You can have a look at the possible configuration options in the fixtures config file at `spec/fixtures/_config.yml` in this repo.
+# Ingore package.json!
+Currently You *MUST* exclude package.json in the `_config.yml` otherwise jekyll will go into a loop. Sucks a bit but will try and improve that.
 
+```yml
+exclude:
+  - package.json
+```
+
+### Example `_config.yml`
+
+You can have a look at the possible configuration options in the fixtures config file at `spec/fixtures/_config.yml` in this repo.
 
 ## Development
 

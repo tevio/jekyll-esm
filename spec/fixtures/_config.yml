@@ -1,3 +1,9 @@
 collections:
   docs:
     output: true
+
+esm:
+  strict: true
+
+exclude:
+  - package.json

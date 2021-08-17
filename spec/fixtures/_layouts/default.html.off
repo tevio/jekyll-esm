@@ -12,8 +12,6 @@
           "../../src/index.js": "../../src/index.js",
           "stimulus": "/node_modules/stimulus/index.js",
           "stimulus/webpack-helpers": "/node_modules/stimulus/webpack-helpers.js",
-          "turbolinks": "/node_modules/turbolinks/dist/turbolinks.js",
-          "turbolinks-animate": "/node_modules/turbolinks-animate/src/index.js",
           "https://www.unpkg.com/vue/dist/vue.runtime.esm.js": "/node_modules/vue/dist/vue.runtime.esm.js"
           }
         }
