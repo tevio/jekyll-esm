@@ -23,9 +23,14 @@ module Jekyll
         importmap = JSON.parse(value.children[0].content)
         imports = importmap["imports"]
         imports.keys.each do |import_key|
+          # ignore urls
           next if import_key =~ /https?:\/\/[\S]+/
+          # ignore relative paths
           next if import_key =~ /(^\.+\/)+/
+          # ignore absolute paths
+          next if import_key =~ /^\/[\S]+/
 
+          # ignore namespaces
           import = import_key.split('/').first
           pkg_path = File.join(page.site.source, 'node_modules', import)
 
