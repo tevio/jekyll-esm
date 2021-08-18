@@ -11,6 +11,7 @@
           "./src/index.js": "./src/index.js",
           "./../src/index.js": "./../src/index.js",
           "../../src/index.js": "../../src/index.js",
+          "@hotwired/turbo/stuff": "/node_modules/turbolinks/dist/turbolinks.js",
           "stimulus": "/node_modules/stimulus/index.js",
           "stimulus/webpack-helpers": "/node_modules/stimulus/webpack-helpers.js",
           "https://www.unpkg.com/vue/dist/vue.runtime.esm.js": "/node_modules/vue/dist/vue.runtime.esm.js"

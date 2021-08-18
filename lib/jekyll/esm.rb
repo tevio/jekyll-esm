@@ -38,7 +38,7 @@ module Jekyll
 
           # ignore namespaces but only if it is not scoped
           if import_key =~ /^@[\S]+/
-            import = import_key.split('/')[0..2].join('/')
+            import = import_key.split('/')[0..1].join('/')
           else
             import = import_key.split('/').first
           end

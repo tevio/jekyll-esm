@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-esm (0.2.3.1)
+    jekyll-esm (0.2.4)
       jekyll
       listen
       nokogiri
