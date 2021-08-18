@@ -11,6 +11,7 @@ module Jekyll
   module Esm
     @@existing_esm_packages = []
     @@new_esm_packages = []
+    @@esm_ids = []
 
     class Error < StandardError; end
 
@@ -20,6 +21,11 @@ module Jekyll
       import_maps = doc.search('script[type=importmap]')
 
       import_maps.each do |value|
+        esm_id = value.attributes["data-esm-id"]&.value
+        # declare a data-esm-id so that jekyll will only process an esm declaration once
+        next if @@esm_ids.include?(esm_id)
+        @@esm_ids << esm_id if esm_id
+
         importmap = JSON.parse(value.children[0].content)
         imports = importmap["imports"]
         imports.keys.each do |import_key|

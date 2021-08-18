@@ -41,13 +41,38 @@ plugins:
   - jekyll/esm
 ```
 
-# Ingore package.json!
+# Ignore package.json!
 Currently You *MUST* exclude package.json in the `_config.yml` otherwise jekyll will go into a loop. Sucks a bit but will try and improve that.
 
 ```yml
 exclude:
   - package.json
 ```
+
+## Optimizing
+### Strict mode
+You can run in strict mode to increase logging verbosity from the js package manager.
+
+``` yml
+# _config.yml
+
+esm:
+  strict: true
+```
+
+### data-esm-id attribute
+You can set this on a declaration to prevent Jekyll from processing it more than once (eg, if you have lots of compiled pages, with the same layout, you don't want to run it more than once per importmap declaration):-
+
+``` html
+    <script data-esm-id='1' type="importmap">
+      {
+        "imports": {
+          "/src/index.js": "/src/index.js"
+        }
+      }
+    </script>
+
+If you have multiple importmap declarations with different values, set a different id for each one, or no id at all, but no id is less speed efficient, as jekyll will process them each time for every page.
 
 ### Example `_config.yml`
 
