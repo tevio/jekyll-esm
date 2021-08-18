@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@hotwired/turbo": "^7.0.0-rc.1",
     "stimulus": "^2.0.0"
   },
   "name": "jekyll-esm-fixtures",

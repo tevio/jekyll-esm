@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/stevemartin/.nvm/versions/node/v12.16.1/bin/node /Users/stevemartin/.yarn/bin/yarn.js add v1.22.11
+  /Users/stevemartin/.nvm/versions/node/v12.16.1/bin/node /Users/stevemartin/.yarn/bin/yarn.js add @hotwiredturbo
 
 PATH: 
   /Users/stevemartin/Projects/jekyll-esm/.bundle/ruby/3.0.0/bin:/Users/stevemartin/.rbenv/versions/3.0.0/bin:/usr/local/Cellar/rbenv/1.1.2/libexec:/Users/stevemartin/Projects/Cape/google-cloud-sdk/bin:/usr/local/sbin:/Users/stevemartin/.yarn/bin:/Users/stevemartin/.config/yarn/global/node_modules/.bin:/Users/stevemartin/.nvm/versions/node/v12.16.1/bin:/Users/stevemartin/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/X11/bin
@@ -14,8 +14,8 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/v1.22.11: Not found
-      at Request.params.callback [as _callback] (/Users/stevemartin/.yarn/lib/cli.js:66987:18)
+  Error: https://registry.yarnpkg.com/@hotwiredturbo: Request "https://registry.yarnpkg.com/@hotwiredturbo" returned a 405
+      at Request.params.callback [as _callback] (/Users/stevemartin/.yarn/lib/cli.js:66996:18)
       at Request.self.callback (/Users/stevemartin/.yarn/lib/cli.js:140748:22)
       at Request.emit (events.js:311:20)
       at Request.<anonymous> (/Users/stevemartin/.yarn/lib/cli.js:141720:10)
@@ -29,8 +29,15 @@ Trace:
 npm manifest: 
   {
     "dependencies": {
-      "yarn": "^1.22.11"
-    }
+      "stimulus": "^2.0.0",
+      "turbolinks": "^5.2.0",
+      "turbolinks-animate": "^3.2.1"
+    },
+    "name": "jekyll-esm-fixtures",
+    "version": "1.0.0",
+    "description": "testing",
+    "main": "index.js",
+    "license": "MIT"
   }
 
 yarn manifest: 
@@ -41,7 +48,52 @@ Lockfile:
   # yarn lockfile v1
   
   
-  yarn@^1.22.11:
-    version "1.22.11"
-    resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.11.tgz#d0104043e7349046e0e2aec977c24be106925ed6"
-    integrity sha512-AWje4bzqO9RUn3sdnM5N8n4ZJ0BqCc/kqFJvpOI5/EVkINXui0yuvU7NDCEF//+WaxHuNay2uOHxA4+tq1P3cg==
+  "@stimulus/core@^2.0.0":
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/@stimulus/core/-/core-2.0.0.tgz#140c85318d6a8a8210c0faf182223b8459348877"
+    integrity sha512-ff70GafKtzc8zQ1/cG+UvL06GcifPWovf2wBEdjLMh9xO2GOYURO3y2RYgzIGYUIBefQwyfX2CLfJdZFJrEPTw==
+    dependencies:
+      "@stimulus/mutation-observers" "^2.0.0"
+  
+  "@stimulus/multimap@^2.0.0":
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/@stimulus/multimap/-/multimap-2.0.0.tgz#420cfa096ed6538df4a91dbd2b2842c1779952b2"
+    integrity sha512-pMBCewkZCFVB3e5mEMoyO9+9aKzHDITmf3OnPun51YWxlcPdHcwbjqm1ylK63fsoduIE+RowBpFwFqd3poEz4w==
+  
+  "@stimulus/mutation-observers@^2.0.0":
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/@stimulus/mutation-observers/-/mutation-observers-2.0.0.tgz#3dbe37453bda47a6c795a90204ee8d77a799fb87"
+    integrity sha512-kx4VAJdPhIGBQKGIoUDC2tupEKorG3A+ckc2b1UiwInKTMAC1axOHU8ebcwhaJIxRqIrs8//4SJo9YAAOx6FEg==
+    dependencies:
+      "@stimulus/multimap" "^2.0.0"
+  
+  "@stimulus/webpack-helpers@^2.0.0":
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/@stimulus/webpack-helpers/-/webpack-helpers-2.0.0.tgz#54296d2a2dffd4f962d2e802d99a3fdd84b8845f"
+    integrity sha512-D6tJWsAC024MwGEIKlUVYU8Ln87mlrmiwHvYAjipg+s8H4eLxUMQ3PZkWyPevfipH+oR3leuHsjYsK1gN5ViQA==
+  
+  animate.css@^3.7.2:
+    version "3.7.2"
+    resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-3.7.2.tgz#e73e0d50e92cb1cfef1597d9b38a9481020e08ea"
+    integrity sha512-0bE8zYo7C0KvgOYrSVfrzkbYk6IOTVPNqkiHg2cbyF4Pq/PXzilz4BRWA3hwEUBoMp5VBgrC29lQIZyhRWdBTw==
+  
+  stimulus@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"
+    integrity sha512-xipy7BS5TVpg4fX6S8LhrYZp7cmHGjmk09WSAiVx1gF5S5g43IWsuetfUhIk8HfHUG+4MQ9nY0FQz4dRFLs/8w==
+    dependencies:
+      "@stimulus/core" "^2.0.0"
+      "@stimulus/webpack-helpers" "^2.0.0"
+  
+  turbolinks-animate@^3.2.1:
+    version "3.2.1"
+    resolved "https://registry.yarnpkg.com/turbolinks-animate/-/turbolinks-animate-3.2.1.tgz#145ddf0b637f7da62d49aca3ca6b74efa1da32d2"
+    integrity sha512-tYnRSMn29NakwaU6Iq5bJYoUmoANlXLp7CsE1DhWfUEK3KMmusj80MdAMyu7aD7ZeZ7iSC1CAG80q7imhqPUag==
+    dependencies:
+      animate.css "^3.7.2"
+      turbolinks "^5.2.0"
+  
+  turbolinks@^5.2.0:
+    version "5.2.0"
+    resolved "https://registry.yarnpkg.com/turbolinks/-/turbolinks-5.2.0.tgz#e6877a55ea5c1cb3bb225f0a4ae303d6d32ff77c"
+    integrity sha512-pMiez3tyBo6uRHFNNZoYMmrES/IaGgMhQQM+VFF36keryjb5ms0XkVpmKHkfW/4Vy96qiGW3K9bz0tF5sK9bBw==

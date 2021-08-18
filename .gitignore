@@ -6,6 +6,8 @@
 /pkg/
 /spec/reports/
 /tmp/
+/spec/fixtures/package.json
+/spec/fixtures/yarn*
 /spec/fixtures/.jekyll-cache/
 /spec/fixtures/_site/
 /spec/fixtures/dist/

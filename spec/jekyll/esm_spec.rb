@@ -70,6 +70,8 @@ RSpec.describe Jekyll::Esm do
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/stimulus")).to be(true)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks")).to be(false)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks-animate")).to be(false)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/@hotwired/turbo")).to be(true)
+
         FileUtils.rm_rf("#{SPEC_FIXTURES_DIR}/node_modules")
       end
     end

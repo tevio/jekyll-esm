@@ -1,5 +1,5 @@
 module Jekyll
   module Esm
-    VERSION = "0.2.3.1"
+    VERSION = "0.2.4"
   end
 end

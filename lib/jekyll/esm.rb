@@ -36,8 +36,13 @@ module Jekyll
           # ignore absolute paths
           next if import_key =~ /^\/[\S]+/
 
-          # ignore namespaces
-          import = import_key.split('/').first
+          # ignore namespaces but only if it is not scoped
+          if import_key =~ /^@[\S]+/
+            import = import_key.split('/')[0..2].join('/')
+          else
+            import = import_key.split('/').first
+          end
+
           pkg_path = File.join(page.site.source, 'node_modules', import)
 
           # don't repeatedly attempt to install a package
