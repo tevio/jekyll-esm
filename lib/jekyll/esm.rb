@@ -84,6 +84,7 @@ module Jekyll
       FileUtils.cp_r(File.join(site.source, 'node_modules'), File.join(site.dest, 'node_modules'))
       @@existing_esm_packages = @@new_esm_packages
       @@new_esm_packages = []
+      @@esm_ids = []
     end
   end
 end
