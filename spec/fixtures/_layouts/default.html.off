@@ -11,7 +11,8 @@
           "./src/index.js": "./src/index.js",
           "./../src/index.js": "./../src/index.js",
           "../../src/index.js": "../../src/index.js",
-          "@hotwired/turbo/stuff": "/node_modules/turbolinks/dist/turbolinks.js",
+          "@hotwired/turbo/stuff": "/node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js",
+          "primevue/button": "https://unpkg.com/primevue@3.4.0/button/button.esm.js",
           "stimulus": "/node_modules/stimulus/index.js",
           "stimulus/webpack-helpers": "/node_modules/stimulus/webpack-helpers.js",
           "https://www.unpkg.com/vue/dist/vue.runtime.esm.js": "/node_modules/vue/dist/vue.runtime.esm.js"

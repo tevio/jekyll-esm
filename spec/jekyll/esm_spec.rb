@@ -52,6 +52,7 @@ RSpec.describe Jekyll::Esm do
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/stimulus")).to be(true)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks")).to be(true)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks-animate")).to be(true)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/primevue")).to be(true)
 
         FileUtils.mv("#{SPEC_FIXTURES_DIR}/_layouts/default.html", "#{SPEC_FIXTURES_DIR}/_layouts/default.html.tmp_off")
         FileUtils.mv("#{SPEC_FIXTURES_DIR}/_layouts/default.html.off", "#{SPEC_FIXTURES_DIR}/_layouts/default.html")
@@ -71,6 +72,7 @@ RSpec.describe Jekyll::Esm do
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks")).to be(false)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/turbolinks-animate")).to be(false)
         expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/@hotwired/turbo")).to be(true)
+        expect(Dir.exists?("#{SPEC_FIXTURES_DIR}/_site/node_modules/primevue")).to be(false)
 
         FileUtils.rm_rf("#{SPEC_FIXTURES_DIR}/node_modules")
       end

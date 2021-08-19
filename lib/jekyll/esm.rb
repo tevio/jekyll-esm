@@ -31,6 +31,7 @@ module Jekyll
         imports.keys.each do |import_key|
           # ignore urls
           next if import_key =~ /https?:\/\/[\S]+/
+          next if imports[import_key] =~ /https?:\/\/[\S]+/
           # ignore relative paths
           next if import_key =~ /(^\.+\/)+/
           # ignore absolute paths
