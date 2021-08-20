@@ -1,4 +1,4 @@
-require_relative 'lib/jekyll/esm/version'
+require_relative 'lib/jekyll-esm/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-esm"

@@ -4,7 +4,7 @@ This plugin will allow you to define esm module definitions directly in your mar
 
 ## Why?
 
-Looks like some of the major frameworks are moving away from asset bundlers as es6 is now able to do most of it internally, which is great. Now you can simply declare your esm definitions in the markup of your templates and with this plugin Jekyll will manage the installation behind the scenes with yarn (will make the package manager configurable in a later version).
+Looks like some of the major frameworks are moving away from asset bundlers as es6 is now able to do most of it internally, which is great. Now you can simply declare your esm definitions in the markup of your templates and with this plugin Jekyll will manage the installation behind the scenes with yarn by default, but you can additionally specify npm or bower as the package manager.
 
 
 ## Installation
@@ -27,19 +27,33 @@ And add the following to your site's `_config.yml`
 
 ```yml
 plugins:
-  - jekyll/esm
+  - jekyll-esm
 ```
 
-NOTE the `/` - the `-` variant is not available yet.
+## Select a package manager
+jekyll-esm uses yarn by default but if you prefer npm or bower, its:
 
-ALSO NOTE - it's probably advisable to place this plugin as the very last one in the build pipe. EG:-
+``` yml
+# _config.yml
 
-```yml
-plugins:
-  - jekyll-otherplug
-  ...
-  - jekyll/esm
+esm:
+  manager: npm|bower
 ```
+
+# Destination folder
+Additionally you can rename the destination folder for production, so where by default it would output to _\_site/node_packages_ or _\_site/bower_components_, if you set the `dist`:
+
+_A NOTE ON NPM_ if you don't have a _package.json_ file in your root, npm will actually search in the parent folder for a _package.json_.
+
+
+``` yml
+# _config.yml
+
+esm:
+  dist: dist
+```
+
+Then all your managed packages will be available at `_site/dist`.
 
 # Ignore package.json!
 Currently You *MUST* exclude package.json in the `_config.yml` otherwise jekyll will go into a loop. Sucks a bit but will try and improve that.
