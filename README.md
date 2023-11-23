@@ -85,6 +85,7 @@ You can set this on a declaration to prevent Jekyll from processing it more than
         }
       }
     </script>
+```
 
 If you have multiple importmap declarations with different values, set a different id for each one, or no id at all, but no id is less speed efficient, as jekyll will process them each time for every page.
 
